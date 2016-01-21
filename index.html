@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="sysgovApp">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Sistemas do Governo</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <script src="assets/js/controller.js"></script>
+    </head>
+
+    <body>
+        <div  ng-controller="sistemasCon">
+            <h1>{{sysgov.description}}</h1>
+
+            <input type="text" ng-model="sysSearch" placeholder="Localizar">
+            
+            <h2>Produção</h2>
+            <ol>
+                <li ng-repeat="sistemas in sysgov.sistemas  | filter: filtraPROD | filter : sysSearch" ng-hide="isHide">
+                    <a href="{{sistemas.url}}" target="_blank">{{sistemas.apelido}}</a><em> ({{sistemas.descricao}})</em>
+                </li>
+            </ol>
+            
+            <h2>Desenvolvimento</h2>
+            <ol>
+                <li ng-repeat="sistemas in sysgov.sistemas  | filter: filtraDESE | filter : sysSearch" ng-hide="isHide">
+                    <a href="{{sistemas.url}}" target="_blank">{{sistemas.apelido}}</a><em> ({{sistemas.descricao}})</em>
+                </li>
+            </ol>
+
+        </div>
+
+    </body>
+
+</html>
